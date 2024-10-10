@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,6 +11,9 @@ class ContactPage extends StatefulWidget {
 
 class _ContactPageState extends State<ContactPage> {
   int currentStep = 0;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   String? imagePath;
   @override
   Widget build(BuildContext context) {
@@ -91,6 +93,7 @@ class _ContactPageState extends State<ContactPage> {
                 Step(
                   title: const Text("Name"),
                   content: TextField(
+                    controller: nameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -101,6 +104,7 @@ class _ContactPageState extends State<ContactPage> {
                 Step(
                   title: const Text("Number"),
                   content: TextField(
+                    controller: phoneController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -111,6 +115,7 @@ class _ContactPageState extends State<ContactPage> {
                 Step(
                   title: const Text("Email"),
                   content: TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -122,7 +127,17 @@ class _ContactPageState extends State<ContactPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                String name = nameController.text;
+                String phone = phoneController.text;
+                String email = emailController.text;
+                String image = imagePath.toString();
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Added Successfully"),
+                  ),
+                );
+                setState(() {});
               },
               child: const Text("SAVE"),
             ),
