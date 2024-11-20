@@ -12,4 +12,16 @@ class ShrIntroHelper {
     bool? status = intro.getBool('isIntroShown');
     return status;
   }
+
+  profileShown() async {
+    SharedPreferences profile = await SharedPreferences.getInstance();
+    await profile.setBool('isProfileShown', true);
+  }
+
+  Future<bool?> isProfileShown() async {
+    SharedPreferences profile = await SharedPreferences.getInstance();
+
+    bool? status = profile.getBool('isProfileShown');
+    return status;
+  }
 }

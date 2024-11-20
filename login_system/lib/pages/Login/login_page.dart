@@ -83,7 +83,9 @@ class _LoginPageState extends State<LoginPage> {
                   minimumSize: const Size.fromHeight(50),
                   backgroundColor: Colors.blueAccent.shade700,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
                 child: const Text(
                   'LOGIN',
                   style: TextStyle(color: Colors.white),
